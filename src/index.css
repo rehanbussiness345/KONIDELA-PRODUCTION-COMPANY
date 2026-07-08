@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0B0B0B;
+  --color-secondary: #141414;
+  --color-gold: #D4AF37;
+  --color-gold-dark: #B8941F;
+  --color-red: #C1121F;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #CFCFCF;
+  --color-border: rgba(255,255,255,0.08);
+  --color-glass: rgba(255,255,255,0.05);
+  --color-glass-hover: rgba(255,255,255,0.1);
+  --font-display: 'Playfair Display', serif;
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #0B0B0B;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0B0B0B;
+  color: #FFFFFF;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0B0B;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8941F;
+}
+
+/* Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* Cinematic gradient overlays */
+.gradient-cinematic {
+  background: linear-gradient(180deg, 
+    rgba(11,11,11,1) 0%, 
+    rgba(11,11,11,0) 15%, 
+    rgba(11,11,11,0) 85%, 
+    rgba(11,11,11,1) 100%
+  );
+}
+
+.gradient-bottom {
+  background: linear-gradient(to top, rgba(11,11,11,1) 0%, rgba(11,11,11,0) 100%);
+}
+
+.gradient-top {
+  background: linear-gradient(to bottom, rgba(11,11,11,1) 0%, rgba(11,11,11,0) 100%);
+}
+
+/* Gold text gradient */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #F5E6A3 40%, #D4AF37 60%, #B8941F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.glass-strong {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Animated border */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(212,175,55,0.2); }
+  50% { border-color: rgba(212,175,55,0.5); }
+}
+
+.border-glow {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* Custom cursor glow */
+.cursor-glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+}
+
+/* Section dividers */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+::selection {
+  background: rgba(212,175,55,0.3);
+  color: #FFFFFF;
+}
+
+/* ============================================
+   DESIGN SYSTEM — SPACING & LAYOUT
+   ============================================ */
+
+/* Container */
+.site-container {
+  max-width: 1320px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}
+
+/* Section padding — 120px top & bottom on desktop */
+.section-padding {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+/* Content hierarchy spacing */
+.heading-to-description {
+  margin-top: 20px;
+}
+
+.description-to-content {
+  margin-top: 40px;
+}
+
+/* Grid & card gaps — 24px */
+.card-gap {
+  gap: 24px;
+}
+
+/* Button gap — 24px */
+.button-gap {
+  gap: 24px;
+}
