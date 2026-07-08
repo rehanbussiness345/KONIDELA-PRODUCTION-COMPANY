@@ -71,7 +71,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
-          className="text-white/60 text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-white/60 text-base sm:text-lg md:text-xl mx-auto mb-10 leading-relaxed"
           style={{ fontFamily: "'Inter', sans-serif" }}
         >
           Crafting epic cinematic experiences that transcend borders. From blockbuster action epics to 
